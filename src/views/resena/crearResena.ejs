@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Reseña</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <%- include('../shared/header') %>
+  </header>
+  <div class="container mt-4">
+    <h1>Crear Reseña</h1>
+    <form action="/api/resena/crearResena" method="POST">
+      <div class="mb-3">
+        <label for="Id_paquete" class="form-label">Paquete de Viaje</label>
+        <select class="form-select" id="Id_paquete" name="Id_paquete" required>
+          <option value="" disabled selected>Seleccione un paquete</option>
+          <% paquetes.forEach(paquete => { %>
+            <option value="<%= paquete.Id %>"><%= paquete.Nombre %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="valoracion" class="form-label">Valoración (1 a 10)</label>
+        <select class="form-select" id="valoracion" name="valoracion" required>
+          <option value="" disabled selected>Seleccione una valoración</option>
+          <% for(let i = 1; i <= 10; i++) { %>
+            <option value="<%= i %>"><%= i %> puntos</option>
+          <% } %>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+    </form>
+
+    <a href="/api/resena/listaResenas" class="btn btn-secondary mt-3">Volver a la lista de reseñas</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

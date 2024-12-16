@@ -1,0 +1,50 @@
+<header class="bg-dark text-white p-3 mb-4">
+  <div class="container">
+    <h1 class="h4">JPTravels</h1>
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a href="/api/paqueteDeViaje/catalogo" class="nav-link text-white">Inicio</a></li>
+        <li class="nav-item"><a href="/api/paqueteDeViaje/catalogo" class="nav-link text-white">Viajes</a></li>
+        <li class="nav-item"><a href="/api/resena/listaResenas" class="nav-link text-white">Reseñas</a></li>
+
+        <% if (usuarioAdmin) { %> 
+        <li class="nav-item dropdown">
+          <a style="text-decoration: none; color:white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Acciones Administrativas
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/api/ciudad/listaCiudades">Ciudades</a></li>
+            <li><a class="dropdown-item" href="/api/actividad/listaActividades">Actividades</a></li>
+            <li><a class="dropdown-item" href="/api/puesto/listaPuestos">Puestos</a></li>
+            <li><a class="dropdown-item" href="/api/empleado/listaEmpleados">Empleados</a></li>
+            <li><a class="dropdown-item" href="/api/transporte/listaTransportes">Transportes</a></li>
+            <li><a class="dropdown-item" href="/api/hospedaje/listaHospedajes">Hospedajes</a></li>
+            <li><a class="dropdown-item" href="/api/paqueteDeViaje/lista">Paquetes de Viaje</a></li>
+            <li><a class="dropdown-item" href="/api/reserva/listaReservas">Reservas</a></li>
+            <li><a class="dropdown-item" href="/api/consulta/listaConsultas">Consultas</a></li>
+          </ul>
+        </li>
+        <% } %>
+
+        <!-- Elementos a la derecha -->
+        <div class="ms-auto d-flex">
+          <% if (usuarioLogueado) { %> 
+            <li class="nav-item"><a href="/api/auth/logout" class="nav-link text-white">Cerrar Sesión</a></li>
+            <li class="nav-item dropdown">
+              <a style="text-decoration: none; color:white;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mi Perfil
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/api/resena/listaResenasUsuario/<%= usuarioId %>">Mis Reseñas</a></li>
+                <li><a class="dropdown-item" href="/api/reserva/listaReservasUsuario/<%= usuarioId %>">Mis Reservas</a></li>
+                <li><a class="dropdown-item" href="/api/consulta/consultasUsuario/<%= usuarioId %>">Mis Consultas</a></li>
+              </ul>
+            </li>
+          <% } else { %>
+            <li class="nav-item"><a href="/api/auth/login" class="nav-link text-white">Iniciar Sesión</a></li>
+          <% } %>
+        </div>
+      </ul>
+    </nav>
+  </div>
+</header>

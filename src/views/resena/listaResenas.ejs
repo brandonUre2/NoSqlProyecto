@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Reseñas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <%- include('../shared/header') %>
+  </header>
+  <div class="container mt-4">
+    <h1>Lista de Reseñas</h1>
+
+    <% if (usuarioLogueado) { %>
+    <a href="/api/resena/crearResena" class="btn btn-primary mb-3">Crear Reseña</a>
+    <% }%>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>Paquete</th>
+          <th>Mensaje</th>
+          <th>Valoración</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% resenas.forEach(resena => { %>
+          <tr>
+            <td><%= resena.usuarioNombre %></td>
+            <td><%= resena.paqueteNombre %></td>
+            <td><%= resena.mensaje %></td>
+            <td><%= resena.valoracion %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
